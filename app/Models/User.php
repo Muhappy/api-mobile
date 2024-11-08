@@ -45,4 +45,28 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get the posts created by the user.
+     */
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'created_by');
+    }
+
+    /**
+     * Get the posts bookmarked by the user.
+     */
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+
+    /**
+     * Get the posts bookmarked by the user.
+     */
+    public function bookmarkedPosts()
+    {
+        return $this->belongsToMany(Post::class, 'bookmarks');
+    }
 }
