@@ -48,11 +48,11 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('description'),
-                Tables\Columns\TextColumn::make('image'),
-                Tables\Columns\TextColumn::make('created_by'),
+                Tables\Columns\TextColumn::make('slug')->limit(10, '...'),
+                Tables\Columns\TextColumn::make('description')->limit(10, '...'),
+                Tables\Columns\TextColumn::make('user.name'),
                 Tables\Columns\TextColumn::make('category.name'),
             ])
             ->filters([
